@@ -1,9 +1,23 @@
 <script setup lang="ts">
-import TypeScript from './components/TypeScript.vue'
+import { ref } from 'vue';
+import TypeScript from './components/TypeScript.vue';
+import Job from './types/job'
+
+
+const jobs = ref<Job[]>([
+  {title: 'Dev js', location: 'paris',  salary: 45000, id: 'SG23'},
+  {title: 'Dev ts', location: 'lyon',  salary: 50000, id: 'SG24'},
+  {title: 'Dev py', location: 'marseille',  salary: 55000, id: 'SG25'}]);
 </script>
 
 <template>
   <TypeScript msg="Type Script" />
+
+  <ul>
+    <li v-for="job in jobs" :key="job.id">
+      <span>{{ job.title }} - {{ job.salary }}</span>
+    </li>
+  </ul>
 </template>
 
 <style scoped>

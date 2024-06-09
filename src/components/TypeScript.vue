@@ -1,15 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue';
 
 defineProps<{ msg: string }>()
 
-const name: Ref<string> = ref('unknow');
-const age: Ref<number> = ref(28);
+const name = ref<string>('unknow');
+const age = ref<number>(28);
+
+const state = reactive({
+  name: 'unknow',
+  age: 28
+});
 
 function changeName(newName: string) {
+  state.name = newName
   name.value = newName
 }
 function changeAge(newName: number) {
+  state.age = newName
   age.value = newName
 }
 </script>
@@ -18,8 +25,8 @@ function changeAge(newName: number) {
   <h1>{{ msg }}</h1>
 
   <div class="card">
-    <button type="button" @click="changeName('Codwerk')">change Name {{ name }}</button>
-    <button type="button" @click="changeAge(29)">change Name {{ age }}</button>
+    <button type="button" @click="changeName('Codwerk')">change Name ref : {{ name }} - reactive {{ state.name }}</button>
+    <button type="button" @click="changeAge(29)">change Name ref : {{ age }} - reactive {{ state.age }}</button>
   </div>
 </template>
 
@@ -28,3 +35,4 @@ function changeAge(newName: number) {
   color: #888;
 }
 </style>
+../types/job./types/job../types/job
