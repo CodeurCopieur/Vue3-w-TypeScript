@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, ref, defineProps } from 'vue';
 
 defineProps<{ msg: string }>()
 

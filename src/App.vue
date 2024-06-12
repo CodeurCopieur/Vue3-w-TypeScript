@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import TypeScript from './components/TypeScript.vue';
+import JobList from './components/jobList.vue';
 import Job from './types/job'
 
 
@@ -12,12 +13,12 @@ const jobs = ref<Job[]>([
 
 <template>
   <TypeScript msg="Type Script" />
-
-  <ul>
-    <li v-for="job in jobs" :key="job.id">
+  <JobList :jobs="jobs" />
+  <!-- <ul>
+    <li v-for="job in jobs" :key="job.id" style="list-style: none;">
       <span>{{ job.title }} - {{ job.salary }}</span>
     </li>
-  </ul>
+  </ul> -->
 </template>
 
 <style scoped>
