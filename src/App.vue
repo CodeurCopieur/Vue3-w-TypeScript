@@ -3,17 +3,31 @@ import { ref } from 'vue';
 import TypeScript from './components/TypeScript.vue';
 import JobList from './components/jobList.vue';
 import Job from './types/job'
+import orderTerm from './types/orderTerm'
 
-
+const order = ref<orderTerm>('salary')
 const jobs = ref<Job[]>([
   {title: 'Dev js', location: 'paris',  salary: 45000, id: 'SG23'},
   {title: 'Dev ts', location: 'lyon',  salary: 50000, id: 'SG24'},
   {title: 'Dev py', location: 'marseille',  salary: 55000, id: 'SG25'}]);
+
+  
+  const handleClick = (term: orderTerm) => {
+    order.value = term
+  };
+
 </script>
 
 <template>
   <TypeScript msg="Type Script" />
-  <JobList :jobs="jobs" />
+  <header>
+    <div class="order">
+      <button @click="handleClick('title')">Ordre par title</button>
+      <button @click="handleClick('location')">Ordre par localisation</button>
+      <button @click="handleClick('salary')">Ordre par salaire</button>
+    </div>
+  </header>
+  <JobList :jobs="jobs" :order="order" />
   <!-- <ul>
     <li v-for="job in jobs" :key="job.id" style="list-style: none;">
       <span>{{ job.title }} - {{ job.salary }}</span>
